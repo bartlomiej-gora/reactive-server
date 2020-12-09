@@ -13,10 +13,10 @@ import static java.time.temporal.ChronoUnit.SECONDS;
 @RestController
 public class PublisherController {
 
-    @GetMapping(value = "/data", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<String> getData() {
-        List<String> list = List.of("Adam", "Bartek", "Patryk", "Kamil", "Krzysztof", "Patryk");
-        return Flux.fromIterable(list).delayElements(Duration.of(2, SECONDS));
+    @GetMapping(value = "/data", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Flux<Integer> getData() {
+        List<Integer> list = List.of(1,2,3,4,5,6,7,8,9,10);
+        return Flux.fromIterable(list);
     }
 
 }
