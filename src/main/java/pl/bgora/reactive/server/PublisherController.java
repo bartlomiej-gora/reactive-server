@@ -25,4 +25,19 @@ public class PublisherController {
     public Mono<Person> addPerson(@RequestBody Person person) {
         return personRepository.save(person);
     }
+
+    @GetMapping(value="/person/{id}")
+    public Mono<Person> getONe(@PathVariable String id){
+        return personRepository.findById(id);
+    }
+
+    @GetMapping(value="/sync/person/{id}")
+    public Person getONeSync(@PathVariable String id){
+        return personRepository.findById(id).block();
+    }
+
+    @GetMapping(value="person")
+    public Flux<Person> getAll(){
+        return personRepository.findAll();
+    }
 }
